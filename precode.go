@@ -1,13 +1,14 @@
 package main
 
 import (
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"net/http"
 	"net/http/httptest"
 	"strconv"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 var cafeList = map[string][]string{
@@ -57,7 +58,7 @@ func TestMainHandlerWhenCountMoreThanTotal(t *testing.T) {
 
 	require.Equal(t, http.StatusOK, responseRecorder.Code)
 	cafes := strings.Split(responseRecorder.Body.String(), ",")
-	assert.Equal(t, cafes, totalCount)
+	assert.Equal(t, totalCount, len(cafes))
 	// здесь нужно добавить необходимые проверки
 }
 
